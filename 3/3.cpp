@@ -24,20 +24,16 @@ class Coordinate
             switch(opcode[0])
             {
                 case 'U':
-                    opcode.erase(opcode.begin());
-                    this->up(std::stoi(opcode));
+                    this->up(std::stoi(opcode.substr(1)));
                     break;
                 case 'D':
-                    opcode.erase(opcode.begin());
-                    this->down(std::stoi(opcode));
+                    this->down(std::stoi(opcode.substr(1)));
                     break;
                 case 'L':
-                    opcode.erase(opcode.begin());
-                    this->left(std::stoi(opcode));
+                    this->left(std::stoi(opcode.substr(1)));
                     break;
                 case 'R':
-                    opcode.erase(opcode.begin());
-                    this->right(std::stoi(opcode));
+                    this->right(std::stoi(opcode.substr(1)));
                     break;
                 default:
                     std::cout << "NOT RECOGNIZED" << std::endl;
@@ -77,7 +73,8 @@ Coordinate is_intersecting(Coordinate l11, Coordinate l12, Coordinate l21, Coord
     int b1 = l11.getx() - l12.getx();
     int a2 = l22.gety() - l21.gety();
     int b2 = l21.getx() - l22.getx();
-    if (a1 * b2 - a2 * b1 == 0)
+    int det = a1 * b2 - a2 * b1;
+    if (det == 0)
     {
         //lets hope this doesnt happen lol
         return Coordinate(INT_MAX, INT_MAX);
@@ -89,8 +86,8 @@ Coordinate is_intersecting(Coordinate l11, Coordinate l12, Coordinate l21, Coord
         // line2
         int c2 = (a2 * l21.getx()) + (b2 * l21.gety());
 
-        int x = (b2 * c1 - b1 * c2) / (a1 * b2 - a2 * b1);
-        int y = (a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1); 
+        int x = (b2 * c1 - b1 * c2) / det;
+        int y = (a1 * c2 - a2 * c1) / det; 
 
         int l1l2 = manhattan_distance(l11, l12);
         int l2l1 = manhattan_distance(l21, l22);
@@ -143,6 +140,6 @@ int main()
         return manhattan_distance(Coordinate(), c1) < manhattan_distance(Coordinate(), c2);
     };
     std::sort(intrs.begin(), intrs.end(), srule);
-    std::cout << "The Manhattan manhattan_distance from the central port to the closest intersection is " << manhattan_distance(Coordinate(), intrs[0]) << ".\nI FUCKING DID IT BITCHEZ I WANNA DIE\n";
+    std::cout << "The Manhattan manhattan_distance from the central port to the closest intersection is " << manhattan_distance(Coordinate(), intrs[0]) << ".\n";
     return 0;
 }
