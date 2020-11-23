@@ -80,7 +80,8 @@ Coordinate is_intersecting(Coordinate l11, Coordinate l12, Coordinate l21, Coord
     int b1 = l11.getx() - l12.getx();
     int a2 = l22.gety() - l21.gety();
     int b2 = l21.getx() - l22.getx();
-    if (a1 * b2 - a2 * b1 == 0)
+    int det = a1 * b2 - a2 * b1;
+    if (det == 0)
     {
         //lets hope this doesnt happen lol
         return Coordinate(INT_MAX, INT_MAX);
@@ -92,8 +93,8 @@ Coordinate is_intersecting(Coordinate l11, Coordinate l12, Coordinate l21, Coord
         // line2
         int c2 = (a2 * l21.getx()) + (b2 * l21.gety());
 
-        int x = (b2 * c1 - b1 * c2) / (a1 * b2 - a2 * b1);
-        int y = (a1 * c2 - a2 * c1) / (a1 * b2 - a2 * b1); 
+        int x = (b2 * c1 - b1 * c2) / det;
+        int y = (a1 * c2 - a2 * c1) / det; 
 
         // calculating distances to and from (x, y) and start and end segment coordinates
         // this is to assert that (x, y) lies on both the lines
@@ -183,10 +184,14 @@ int main()
         return manhattan_distance(Coordinate(), c1) < manhattan_distance(Coordinate(), c2);
     };
     std::sort(intrs.begin(), intrs.end(), srule);
+<<<<<<< HEAD
     std::sort(cost.begin(), cost.end());
     // P1
     std::cout << "[P1] The Manhattan distance from the central port to the closest intersection is " << manhattan_distance(Coordinate(), intrs[0]) << ".\n";
     // P2
     std::cout << "[P2] The fewest combined steps the wires must take to reach an intersection is " << cost[0] << ".\n";
+=======
+    std::cout << "The Manhattan manhattan_distance from the central port to the closest intersection is " << manhattan_distance(Coordinate(), intrs[0]) << ".\n";
+>>>>>>> 99a836707fb405aab42fa9ba84f002033013886a
     return 0;
 }
