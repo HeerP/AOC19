@@ -184,14 +184,10 @@ int main()
         return manhattan_distance(Coordinate(), c1) < manhattan_distance(Coordinate(), c2);
     };
     std::sort(intrs.begin(), intrs.end(), srule);
-<<<<<<< HEAD
     std::sort(cost.begin(), cost.end());
     // P1
     std::cout << "[P1] The Manhattan distance from the central port to the closest intersection is " << manhattan_distance(Coordinate(), intrs[0]) << ".\n";
     // P2
     std::cout << "[P2] The fewest combined steps the wires must take to reach an intersection is " << cost[0] << ".\n";
-=======
-    std::cout << "The Manhattan manhattan_distance from the central port to the closest intersection is " << manhattan_distance(Coordinate(), intrs[0]) << ".\n";
->>>>>>> 99a836707fb405aab42fa9ba84f002033013886a
     return 0;
 }
