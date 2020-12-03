@@ -96,7 +96,7 @@ int main()
         // We dont need to worry about objects that don't orbit anything (key doesn't exist) because essentially, they don't amount to the number of total orbits
     }
     dist = compute();
-    std::cout << "Total orbits are " << total << std::endl;
-    std::cout << "The minimum number of orbital transfers required to move from the object " << P1 << " are orbiting to the object " << P2 << " is orbiting is " << dist << std::endl;
+    std::cout << "[P1] Total orbits are " << total << std::endl;
+    std::cout << "[P2] The minimum number of orbital transfers required to move from the object " << P1 << " are orbiting to the object " << P2 << " is orbiting is " << dist << std::endl;
     file.close();
 }
