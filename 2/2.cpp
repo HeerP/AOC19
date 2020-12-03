@@ -58,7 +58,7 @@ int main()
     std::ifstream file("2.txt");
     std::getline(file, opcode);
     arr = parse(opcode);
-
+    file.close();
 
     // Part one
     arr[1] = 12;

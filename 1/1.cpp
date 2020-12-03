@@ -31,5 +31,6 @@ int main()
         sum += total_fuel_req(mass);
     }
     std::cout << "The total fuel required is " << sum << std::endl;
+    file.close();
     return 0;
 }

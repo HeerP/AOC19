@@ -114,6 +114,7 @@ int main()
     std::ifstream file("5.txt");
     std::getline(file, opcode);
     arr = parse(opcode);
+    file.close();
     compute(arr);
     return 0;
 }

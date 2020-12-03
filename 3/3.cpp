@@ -174,6 +174,7 @@ int main()
     std::getline(file, l2);
     line1 = parse(l1);
     line2 = parse(l2);
+    file.close();
     // You can implement this without these coordinate pairs if u only store the manhattan_distances
     // which is what we need, but im storing coordinates because i didn't think of this till now :/
     std::vector<Coordinate> intrs = return_intersection(line1, line2);
